@@ -45,6 +45,10 @@ print(sec_largest_only(P))
 
 
 # Terminal-type Search Function #
+# Optimal Solution: Tournament Method
+# This method uses a tournament-style approach to find the second largest element
+# This approach utilizes a tree-style iteration process
+# It will at most use n + log(2,n) - 2 comparisons
 
 def sec_largest_optimal(array):
     import math
@@ -52,7 +56,7 @@ def sec_largest_optimal(array):
     # Each element is paired with a list of elements it has beaten
     matches = [(num, []) for num in array]
 
-    # Tournament to find the largest, tracking who each winner beats
+    # Tournament to find the largest, tracking who each winner beats, at most n - 1 comparisons
     while len(matches) > 1:
         next_round = []
         for i in range(0, len(matches), 2):
