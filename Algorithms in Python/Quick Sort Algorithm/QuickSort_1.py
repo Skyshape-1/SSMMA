@@ -19,7 +19,7 @@ def QSort(array):
         pivot_idx = random_pivot(array)
         res = partition(array, pivot_idx)
         fir_sorted, pivot, sec_sorted = QSort(res[0]), res[1], QSort(res[2])
-        return fir_sorted + [pivot] + sec_sorted
+        return fir_sorted + pivot + sec_sorted
 
 def partition(array, pivot_idx):
     n = len(array)
@@ -31,7 +31,7 @@ def partition(array, pivot_idx):
             array[i], array[j] = array[j], array[i]
             i += 1
     array[0], array[i-1] = array[i-1], array[0]
-    return (array[:i-1], array[i-1], array[i:])
+    return (array[:i-1], [array[i-1]], array[i:])
 
 import random 
 def random_pivot(array):
