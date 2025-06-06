@@ -15,17 +15,17 @@ def RSelect(array, m, left=0, right=None):
         return array[left]
     else:
         random_idx = random_pivot(left, right)
-        pivot_idx = partition(array, left, right, random_idx)
-        k = pivot_idx - left + 1  # Number of elements in left partition including pivot
+        pivot_idx = partition(array, random_idx, left, right)  # <-- updated argument order
+        k = pivot_idx - left 
 
         if m == k:
             return array[pivot_idx]
         elif m < k:
             return RSelect(array, m, left, pivot_idx)
         else:
-            return RSelect(array, m - k, pivot_idx + 1, right)
+            return RSelect(array, m - k - 1, pivot_idx + 1, right)
 
-def partition(array, left, right, pivot_idx):
+def partition(array, pivot_idx, left = 0, right = None):
     """
     Lomuto partition scheme for in-place partitioning.
 
@@ -38,6 +38,9 @@ def partition(array, left, right, pivot_idx):
     Returns:
         int: The final index of the pivot.
     """
+    if right is None:
+        right = len(array)
+
     array[left], array[pivot_idx] = array[pivot_idx], array[left]
     pivot = array[left]
     i = left + 1
@@ -55,10 +58,15 @@ def random_pivot(left, right):
 # Test Case #
 def test_case():
     P = [8, 7, 6, 4, 3, 5, 1, 2, 12, 15, 9, 10, 13, 11, 14, 16, 17, 18, 19, 20]
-    order_stat = 11
+    order_stat = 11  
     res = RSelect(P, order_stat)
-    expected = order_stat
-    boolean = expected == res
-    print(f"The expected answer {expected} matches RSelect result {res} ?= {boolean}")
+    expected = sorted(P)[order_stat]
+    print(f"The expected answer {expected} matches RSelect result? {expected == res}!")
+    if not expected == res:
+        print(f"The incorrect output from DSelect is {res}")
 
-test_case()
+if __name__ == "__main__":
+    # Only runs when this file is executed directly
+    print("Testing RSelect...")
+    # test cases here
+    test_case()
