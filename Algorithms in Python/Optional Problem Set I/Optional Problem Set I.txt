@@ -21,7 +21,7 @@ and approaches with your fellow students on the " Theory Problems " discussion f
     positive , negative , or zero . You want to decide whether or not there is an index i such that 
     A[i] = i. Design the fastest algorithm that you can for solving this problem .
 
-(To be solved)
+(Can not solve on one's own)
 4 . You are given an n by n grid of distinct numbers. A number is a local minimum if it is smaller than 
     all of its neighbors . (A neighbor of a number is one immediately above, below, to the left, or 
     the right. Most numbers have four neighbors; numbers on the side have three; the four corners have two.) 
