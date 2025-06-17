@@ -2,7 +2,8 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Merge_Sort import merge_sort
-from Randomized_Select_Algorithm import partition
+from Select_Algorithms.Randomized_Select_Algorithm import partition
+# from Randomized_Select_Algorithm import partition
 # Purpose: Implement the DSelect algorithm taught in Module 3
 # Input: an unsorted array A of n distinct integers, and an integer m (0-based)
 # Output: the mth order statistic of A
